@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { SparklesIcon } from '@heroicons/react/24/outline'
 import { PauseIcon, PlayIcon, SpeakerWaveIcon, SpeakerXMarkIcon } from '@heroicons/react/24/solid'
-import OrbitSection from '@/components/OrbitSection'
+import OrbitSection from '@/components/orbit-section'
 
 // Videos used by the ComputerSection (module scope to keep useEffect stable)
 const videos = [

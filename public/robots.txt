@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://studio.adnova.digital/sitemap.xml
+Host: https://studio.adnova.digital

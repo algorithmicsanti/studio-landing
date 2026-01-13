@@ -46,7 +46,7 @@ export default function Home() {
         {/* Full Screen Video Background */}
         <div className="absolute inset-0 w-full h-full z-0">
           <video
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover scale-[1.02]"
             autoPlay
             muted
             loop
@@ -61,35 +61,16 @@ export default function Home() {
 
         {/* Content Container */}
         <div className="relative z-20 max-w-5xl mx-auto px-6 text-center">
-          {/* Eyebrow - Badge */}
-          <div className="inline-flex flex-col items-center px-4 py-2 rounded-full text-primary font-semibold mb-8">
-            <div className="inline-flex items-center px-4 py-2 bg-black/40 rounded-full gap-3 border border-white/10 backdrop-blur-md">
-              <SparklesIcon className="h-4 w-4 text-primary-light" />
-              <span className="font-semibold text-white">#1</span>
-              <span className="text-sm md:text-base text-gray-200">Herramienta de Video con IA</span>
-            </div>
-            <div className="mt-3 flex items-center gap-2 text-sm text-white/90">
-              {/* 5 stars */}
-              <div className="flex items-center gap-1">
-                {[0, 1, 2, 3, 4].map((i) => (
-                  <svg key={i} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4 text-yellow-500">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.966a1 1 0 00.95.69h4.175c.969 0 1.371 1.24.588 1.81l-3.379 2.455a1 1 0 00-.364 1.118l1.287 3.966c.3.921-.755 1.688-1.54 1.118L10 13.347l-3.382 2.488c-.785.57-1.84-.197-1.54-1.118l1.287-3.966a1 1 0 00-.364-1.118L2.64 9.393c-.783-.57-.38-1.81.588-1.81h4.175a1 1 0 00.95-.69L9.05 2.927z" />
-                  </svg>
-                ))}
-              </div>
-            </div>
-          </div>
-
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight drop-shadow-lg">
-            La Mejor IA para
+            Producción de
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-white">
-              Producción de Video
+              Video Ads con IA
             </span>
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto mb-10 drop-shadow-md">
-            Crea anuncios de video para e-commerce de alto rendimiento en días, no semanas.
+            Crea anuncios de video para tu producto, marca o servicio en días, no semanas.
           </p>
 
           <Link

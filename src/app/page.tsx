@@ -87,10 +87,10 @@ export default function Home() {
       <OrbitSection />
 
 
-      {/* IA + Humano en el Loop - sección de ancho completo con fondo negro */}
+      {/* IA + Editores en el Workflow - sección de ancho completo con fondo negro */}
       <section className="py-20 bg-background border-t border-border">
         <div className="max-w-4xl mx-auto text-center px-6">
-          <h3 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">IA + Humano en el Loop de Producción</h3>
+          <h3 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">IA + Editores en el Workflow de Producción</h3>
           <p className="text-xl text-muted leading-relaxed">
             Adnova Studio combina la agilidad de modelos de IA generativa con edición profesional.
             ¿El resultado? Anuncios de video que realmente puedes usar.
@@ -103,17 +103,13 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Automatización cuando la quieras,
-              <br />
-              control creativo cuando no
+              Ejemplos de nuestro trabajo
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Video Composer */}
-            <div className="bg-card border border-border rounded-2xl p-8 hover:border-primary/50 transition-all group overflow-hidden">
-              <h3 className="text-2xl font-bold text-foreground mb-3">Video Composer</h3>
-              <p className="text-muted mb-6">Crea videos completos con solo instrucciones simples.</p>
+            <div className="bg-card border border-border rounded-2xl p-4 hover:border-primary/50 transition-all group overflow-hidden">
               <div className="relative bg-gradient-to-br from-primary/10 to-purple-500/10 rounded-xl overflow-hidden aspect-video border border-border/50 group-hover:border-primary/30 transition-all shadow-2xl">
                 <video
                   className="absolute inset-0 w-full h-full object-cover"
@@ -133,9 +129,7 @@ export default function Home() {
             </div>
 
             {/* AI Native Video Editor */}
-            <div className="bg-card border border-border rounded-2xl p-8 hover:border-primary/50 transition-all group overflow-hidden">
-              <h3 className="text-2xl font-bold text-foreground mb-3">Editor de Video con IA</h3>
-              <p className="text-muted mb-6">Control total con IA potente directamente desde el editor.</p>
+            <div className="bg-card border border-border rounded-2xl p-4 hover:border-primary/50 transition-all group overflow-hidden">
               <div className="relative bg-gradient-to-br from-primary/10 to-purple-500/10 rounded-xl overflow-hidden aspect-video border border-border/50 group-hover:border-primary/30 transition-all shadow-2xl">
                 <video
                   className="absolute inset-0 w-full h-full object-cover"
@@ -155,9 +149,7 @@ export default function Home() {
             </div>
 
             {/* Use your own style or characters */}
-            <div className="bg-card border border-border rounded-2xl p-8 hover:border-primary/50 transition-all group overflow-hidden">
-              <h3 className="text-2xl font-bold text-foreground mb-3">Usa tu propio estilo o personajes</h3>
-              <p className="text-muted mb-6">Consistencia hecha fácil.</p>
+            <div className="bg-card border border-border rounded-2xl p-4 hover:border-primary/50 transition-all group overflow-hidden">
               <div className="relative bg-gradient-to-br from-primary/10 to-purple-500/10 rounded-xl overflow-hidden aspect-video border border-border/50 group-hover:border-primary/30 transition-all shadow-2xl">
                 <video
                   className="absolute inset-0 w-full h-full object-cover"
@@ -177,9 +169,7 @@ export default function Home() {
             </div>
 
             {/* AI Sound */}
-            <div className="bg-card border border-border rounded-2xl p-8 hover:border-primary/50 transition-all group overflow-hidden">
-              <h3 className="text-2xl font-bold text-foreground mb-3">Sonido IA</h3>
-              <p className="text-muted mb-6">Voiceovers, efectos y música—perfectamente sincronizados.</p>
+            <div className="bg-card border border-border rounded-2xl p-4 hover:border-primary/50 transition-all group overflow-hidden">
               <div className="relative bg-gradient-to-br from-primary/10 to-purple-500/10 rounded-xl overflow-hidden aspect-video border border-border/50 group-hover:border-primary/30 transition-all shadow-2xl">
                 <video
                   className="absolute inset-0 w-full h-full object-cover"

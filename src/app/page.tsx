@@ -41,38 +41,38 @@ export default function Home() {
     <div className="min-h-screen bg-background text-foreground">
 
       {/* Hero Section */}
-      <section className="relative py-17 px-6 min-h-[75vh] flex items-center justify-center">
-        {/* Background video positioned inside this section only (not fixed) */}
-        <video
-          ref={heroVideoRef}
-          className="absolute inset-0 w-full h-full object-cover -z-20 opacity-60"
-          autoPlay
-          muted
-          loop
-          preload="metadata"
-          playsInline
-          aria-hidden="true"
-        >
-          {/* Hero (primera pantalla) - mostrar Audi */}
-          <source src="/Audi%20RS%20e-tron%20GT.mp4" type="video/mp4" />
-        </video>
+      {/* Hero Section */}
+      <section className="relative h-screen w-full overflow-hidden flex items-center justify-center">
+        {/* Full Screen Video Background */}
+        <div className="absolute inset-0 w-full h-full z-0">
+          <video
+            className="w-full h-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+          >
+            <source src="/audi-hero.mp4" type="video/mp4" />
+          </video>
+          {/* Overlay to darken video for text readability */}
+          <div className="absolute inset-0 bg-black/50 z-10" />
+        </div>
 
-        {/* Semi-opaque black overlay to improve text contrast (covers hero area only) */}
-        <div className="absolute inset-0 bg-black/40 -z-10" />
-
-        <div className="max-w-5xl mx-auto text-center z-10 relative">
+        {/* Content Container */}
+        <div className="relative z-20 max-w-5xl mx-auto px-6 text-center">
           {/* Eyebrow - Badge */}
-          <div className="inline-flex flex-col items-center px-4 py-2 rounded-full text-primary font-semibold mb-6">
-            <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full gap-3 border border-primary/20 backdrop-blur-md">
-              <SparklesIcon className="h-4 w-4" />
-              <span className="font-semibold">#1</span>
-              <span className="text-sm md:text-base">Herramienta de Video con IA</span>
+          <div className="inline-flex flex-col items-center px-4 py-2 rounded-full text-primary font-semibold mb-8">
+            <div className="inline-flex items-center px-4 py-2 bg-black/40 rounded-full gap-3 border border-white/10 backdrop-blur-md">
+              <SparklesIcon className="h-4 w-4 text-primary-light" />
+              <span className="font-semibold text-white">#1</span>
+              <span className="text-sm md:text-base text-gray-200">Herramienta de Video con IA</span>
             </div>
-            <div className="mt-3 flex items-center gap-2 text-sm text-primary/90">
+            <div className="mt-3 flex items-center gap-2 text-sm text-white/90">
               {/* 5 stars */}
               <div className="flex items-center gap-1">
                 {[0, 1, 2, 3, 4].map((i) => (
-                  <svg key={i} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5 text-yellow-400">
+                  <svg key={i} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4 text-yellow-500">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.966a1 1 0 00.95.69h4.175c.969 0 1.371 1.24.588 1.81l-3.379 2.455a1 1 0 00-.364 1.118l1.287 3.966c.3.921-.755 1.688-1.54 1.118L10 13.347l-3.382 2.488c-.785.57-1.84-.197-1.54-1.118l1.287-3.966a1 1 0 00-.364-1.118L2.64 9.393c-.783-.57-.38-1.81.588-1.81h4.175a1 1 0 00.95-.69L9.05 2.927z" />
                   </svg>
                 ))}
@@ -80,28 +80,25 @@ export default function Home() {
             </div>
           </div>
 
-          {/* H1 - Main Heading */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight tracking-tight">
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight drop-shadow-lg">
             La Mejor IA para
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-primary-dark">Producción de Video</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-white">
+              Producción de Video
+            </span>
           </h1>
 
-          {/* Subtitle */}
-          <p className="text-xl md:text-2xl text-muted max-w-3xl mx-auto mb-10">
+          <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto mb-10 drop-shadow-md">
             Crea anuncios de video para e-commerce de alto rendimiento en días, no semanas.
           </p>
 
-          {/* CTA Button */}
           <Link
             href="/signup"
-            className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all bg-primary rounded-xl hover:bg-primary-dark hover:scale-105 shadow-lg shadow-primary/20"
+            className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all bg-primary rounded-xl hover:bg-primary-dark hover:scale-105 shadow-[0_0_30px_rgba(177,82,224,0.5)] border border-primary-light/20"
           >
             <SparklesIcon className="h-5 w-5 mr-2" />
             Comenzar Ahora
           </Link>
-          {/* Eyebrow Text - Trust indicator */}
-
         </div>
       </section>
 
@@ -469,26 +466,67 @@ export default function Home() {
 
 
       {/* Enterprise Section */}
-      <section className="py-20 px-6 border-t border-border">
-        <div className="max-w-4xl mx-auto text-center">
-          <h3 className="text-3xl font-bold text-foreground mb-6">¿Necesitas Soporte Empresarial?</h3>
-          <p className="text-xl text-muted mb-8">
-            Trabaja con nuestro equipo de Studio para personalizar una plantilla para tu marca o negocio
-            y automatizar todo tu pipeline de producción a escala.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/signup"
-              className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-primary text-white font-bold hover:scale-105 transition-all"
-            >
-              Comenzar Gratis
-            </Link>
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 border border-border text-foreground rounded-xl hover:bg-muted/10 transition-colors font-medium text-lg"
-            >
-              Contactar Ventas
-            </Link>
+      <section className="py-24 px-6 border-t border-border relative overflow-hidden">
+        {/* Background Decorative Element */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] -z-10" />
+
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-card/50 backdrop-blur-xl border border-border rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+            {/* Subtle internal glow */}
+            <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/10 rounded-full blur-3xl" />
+
+            <form onSubmit={(e) => { e.preventDefault(); alert('Mensaje enviado. Nos pondremos en contacto pronto.'); }} className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
+              <div className="space-y-2">
+                <label htmlFor="name" className="text-sm font-medium text-foreground/80 ml-1">Nombre Completo</label>
+                <input
+                  type="text"
+                  id="name"
+                  required
+                  placeholder="Tu nombre"
+                  className="w-full bg-background/50 border border-border rounded-xl px-4 py-3 text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
+                />
+              </div>
+              <div className="space-y-2">
+                <label htmlFor="email" className="text-sm font-medium text-foreground/80 ml-1">Correo Electrónico</label>
+                <input
+                  type="email"
+                  id="email"
+                  required
+                  placeholder="tu@empresa.com"
+                  className="w-full bg-background/50 border border-border rounded-xl px-4 py-3 text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
+                />
+              </div>
+              <div className="space-y-2 md:col-span-2">
+                <label htmlFor="company" className="text-sm font-medium text-foreground/80 ml-1">Empresa</label>
+                <input
+                  type="text"
+                  id="company"
+                  placeholder="Nombre de tu empresa"
+                  className="w-full bg-background/50 border border-border rounded-xl px-4 py-3 text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
+                />
+              </div>
+              <div className="space-y-2 md:col-span-2">
+                <label htmlFor="message" className="text-sm font-medium text-foreground/80 ml-1">¿En qué podemos ayudarte?</label>
+                <textarea
+                  id="message"
+                  required
+                  rows={4}
+                  placeholder="Cuéntanos sobre tu proyecto o necesidades..."
+                  className="w-full bg-background/50 border border-border rounded-xl px-4 py-3 text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all resize-none"
+                ></textarea>
+              </div>
+              <div className="md:col-span-2 mt-4">
+                <button
+                  type="submit"
+                  className="w-full md:w-auto inline-flex items-center justify-center px-10 py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary-dark hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-primary/25 gap-2"
+                >
+                  Enviar Mensaje
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+                  </svg>
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </section>

@@ -38,7 +38,7 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col -mt-8">
+    <div className="min-h-screen bg-background text-foreground flex flex-col -mt-16 md:-mt-10">
 
       {/* Hero Section */}
       {/* Hero Section */}

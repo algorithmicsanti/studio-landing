@@ -27,5 +27,5 @@
 
 .logoImage {
     object-fit: contain;
-    filter: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.5));
+    filter: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.5)) brightness(0) invert(1);
 }

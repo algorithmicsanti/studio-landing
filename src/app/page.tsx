@@ -74,7 +74,7 @@ export default function Home() {
           </p>
 
           <Link
-            href="/signup"
+            href="#pricing"
             className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all bg-primary rounded-xl hover:bg-primary-dark hover:scale-105 shadow-[0_0_30px_rgba(177,82,224,0.5)] border border-primary-light/20"
           >
             <SparklesIcon className="h-5 w-5 mr-2" />

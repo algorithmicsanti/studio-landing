@@ -5,12 +5,20 @@ const STUDIO_SALES_EMAIL = 'studiosales@adnova.digital'
 export async function POST(request: Request) {
     try {
         const body = await request.json()
-        const { name, email, message, subject } = body || {}
+        
+        // Soportar ambos formatos: contacto tradicional y demo
+        const name = body.name || body.fullName || 'No especificado'
+        const email = body.email || ''
+        const phone = body.phone || ''
+        const company = body.company || ''
+        const message = body.message || `Teléfono: ${phone}\nEmpresa: ${company}`
+        const subject = body.subject || 'Solicitud de Demo'
+        const to = body.to || STUDIO_SALES_EMAIL
 
         console.log('[Contact API] Received request:', { name, email, subject: subject?.substring(0, 50), hasMessage: !!message })
 
-        if (!name || !email || !message) {
-            console.warn('[Contact API] Missing fields - name:', !!name, 'email:', !!email, 'message:', !!message)
+        if (!email) {
+            console.warn('[Contact API] Missing email field')
             return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
         }
 
@@ -20,8 +28,7 @@ export async function POST(request: Request) {
             return NextResponse.json({ error: 'Invalid email' }, { status: 400 })
         }
 
-        // Send email to studiosales@adnova.digital using Resend
-        // Environment variable RESEND_API_KEY should be set
+        // Send email using Resend
         const resendApiKey = process.env.RESEND_API_KEY
 
         if (!resendApiKey) {
@@ -29,22 +36,21 @@ export async function POST(request: Request) {
             return NextResponse.json({ ok: true, warning: 'Email service not configured' })
         }
 
-        // Use the verified domain for both development and production
-        // studio.adnova.digital is verified in Resend, so we can use it in both environments
         const fromEmail = 'noreply@studio.adnova.digital'
 
-        console.log('[Contact API] Sending email via Resend - FROM:', fromEmail, 'TO:', STUDIO_SALES_EMAIL)
+        console.log('[Contact API] Sending email via Resend - FROM:', fromEmail, 'TO:', to)
 
         const emailBody = JSON.stringify({
             from: fromEmail,
-            to: STUDIO_SALES_EMAIL,
+            to: to,
             replyTo: email,
-            subject: `Nuevo mensaje de contacto: ${subject || 'Sin asunto'}`,
+            subject: `${subject} - ${name}`,
             html: `
-        <h2>Nuevo mensaje de contacto</h2>
+        <h2>${subject}</h2>
         <p><strong>Nombre:</strong> ${escapeHtml(name)}</p>
         <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-        <p><strong>Asunto:</strong> ${escapeHtml(subject || 'N/A')}</p>
+        ${phone ? `<p><strong>Teléfono:</strong> ${escapeHtml(phone)}</p>` : ''}
+        ${company ? `<p><strong>Empresa:</strong> ${escapeHtml(company)}</p>` : ''}
         <p><strong>Mensaje:</strong></p>
         <p>${escapeHtml(message).replace(/\n/g, '<br>')}</p>
       `

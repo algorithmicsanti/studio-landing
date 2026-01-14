@@ -16,6 +16,14 @@ const videos = [
 ]
 
 export default function Home() {
+  const [demoStep, setDemoStep] = useState(0)
+  const [demoFormData, setDemoFormData] = useState({
+    email: '',
+    fullName: '',
+    phone: '',
+    company: '',
+  })
+  
   useEffect(() => {
     // Check if user is authenticated (in real app, check auth state)
     // For demo purposes, we'll show the landing page
@@ -76,6 +84,13 @@ export default function Home() {
           <Link
             href="#pricing"
             className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all bg-primary rounded-xl hover:bg-primary-dark hover:scale-105 shadow-[0_0_30px_rgba(177,82,224,0.5)] border border-primary-light/20"
+            onClick={(e) => {
+              e.preventDefault()
+              // Scroll to pricing section
+              setTimeout(() => {
+                document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })
+              }, 100)
+            }}
           >
             <SparklesIcon className="h-5 w-5 mr-2" />
             Comenzar Ahora
@@ -259,10 +274,6 @@ export default function Home() {
       </section>
 
       {/* Pricing Section */}
-
-
-
-      {/* Enterprise Section */}
       <section id="pricing" className="py-24 px-6 border-t border-border relative overflow-hidden">
         {/* Background Decorative Element */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] -z-10" />
@@ -276,103 +287,164 @@ export default function Home() {
               Podemos entregarte desde 5 hasta 50 videos por mes.
             </p>
           </div>
-          <div className="bg-card/50 backdrop-blur-xl border border-border rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
-            {/* Subtle internal glow */}
-            <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/10 rounded-full blur-3xl" />
 
-            <form onSubmit={async (e) => {
-              e.preventDefault();
-              const form = e.target as HTMLFormElement;
-              const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
-              const originalBtnText = submitBtn.innerHTML;
-
-              submitBtn.disabled = true;
-              submitBtn.innerHTML = 'Enviando...';
-
-              try {
-                const formData = new FormData(form);
-                const data = {
-                  name: formData.get('name'),
-                  email: formData.get('email'),
-                  subject: `Contacto de ${formData.get('company') || 'N/A'}`,
-                  message: formData.get('message'),
-                };
-
-                const response = await fetch('/api/contact', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify(data),
-                });
-
-                if (response.ok) {
-                  alert('¡Mensaje enviado! Nos pondremos en contacto pronto.');
-                  form.reset();
-                } else {
-                  throw new Error('Error al enviar el mensaje');
-                }
-              } catch (error) {
-                console.error(error);
-                alert('Hubo un error al enviar el mensaje. Por favor intenta de nuevo.');
-              } finally {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalBtnText;
-              }
-            }} className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
-              <div className="space-y-2">
-                <label htmlFor="name" className="text-sm font-medium text-foreground/80 ml-1">Nombre Completo</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  placeholder="Tu nombre"
-                  className="w-full bg-background/50 border border-border rounded-xl px-4 py-3 text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
-                />
-              </div>
-              <div className="space-y-2">
-                <label htmlFor="email" className="text-sm font-medium text-foreground/80 ml-1">Correo Electrónico</label>
+          <div className="flex gap-4 justify-center mb-12 max-w-2xl mx-auto">
+            {demoStep === 0 ? (
+              // Step 0: Email input
+              <div className="flex gap-3 w-full bg-card/50 backdrop-blur-xl border border-border rounded-full p-2 shadow-lg">
                 <input
                   type="email"
-                  id="email"
-                  name="email"
-                  required
-                  placeholder="tu@empresa.com"
-                  className="w-full bg-background/50 border border-border rounded-xl px-4 py-3 text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
+                  placeholder="Ingresa tu correo empresarial"
+                  value={demoFormData.email}
+                  onChange={(e) => setDemoFormData({ ...demoFormData, email: e.target.value })}
+                  className="flex-1 bg-transparent border-0 px-6 py-3 text-foreground placeholder:text-muted/60 focus:outline-none"
+                  autoFocus
                 />
-              </div>
-              <div className="space-y-2 md:col-span-2">
-                <label htmlFor="company" className="text-sm font-medium text-foreground/80 ml-1">Empresa</label>
-                <input
-                  type="text"
-                  id="company"
-                  name="company"
-                  placeholder="Nombre de tu empresa"
-                  className="w-full bg-background/50 border border-border rounded-xl px-4 py-3 text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
-                />
-              </div>
-              <div className="space-y-2 md:col-span-2">
-                <label htmlFor="message" className="text-sm font-medium text-foreground/80 ml-1">¿En qué podemos ayudarte?</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  rows={4}
-                  placeholder="Cuéntanos sobre tu proyecto o necesidades..."
-                  className="w-full bg-background/50 border border-border rounded-xl px-4 py-3 text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all resize-none"
-                ></textarea>
-              </div>
-              <div className="md:col-span-2 mt-4">
                 <button
-                  type="submit"
-                  className="w-full md:w-auto inline-flex items-center justify-center px-10 py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary-dark hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-primary/25 gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                  onClick={() => {
+                    if (demoFormData.email.includes('@') && demoFormData.email.length > 0) {
+                      setDemoStep(1)
+                    } else {
+                      alert('Por favor ingresa un correo válido')
+                    }
+                  }}
+                  className="px-8 py-3 bg-primary text-white font-bold rounded-full hover:bg-primary-dark hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap"
                 >
-                  Enviar Mensaje
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-                  </svg>
+                  Solicitar Demo
                 </button>
               </div>
-            </form>
+            ) : (
+              // Steps 1-5: Form fields
+              <div className="w-full max-w-2xl space-y-6">
+                <div className="bg-card/50 backdrop-blur-xl border border-border rounded-2xl p-8 shadow-lg">
+                  {/* Progress Bar */}
+                  <div className="mb-6">
+                    <div className="w-full h-1 bg-border rounded-full overflow-hidden mb-3">
+                      <div
+                        className="h-full bg-gradient-to-r from-primary to-purple-500 transition-all duration-300"
+                        style={{ width: `${(demoStep / 4) * 100}%` }}
+                      />
+                    </div>
+                    <p className="text-xs text-muted">Paso {demoStep} de 3</p>
+                  </div>
+
+                  {/* Step 1: Full Name */}
+                  {demoStep === 1 && (
+                    <div className="animate-fadeIn space-y-4">
+                      <label className="block text-lg font-medium text-foreground">¿Cuál es tu nombre completo?</label>
+                      <input
+                        type="text"
+                        placeholder="Juan Pérez"
+                        value={demoFormData.fullName}
+                        onChange={(e) => setDemoFormData({ ...demoFormData, fullName: e.target.value })}
+                        className="w-full bg-background/50 border border-border rounded-xl px-4 py-3 text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
+                        autoFocus
+                      />
+                    </div>
+                  )}
+
+                  {/* Step 2: Phone */}
+                  {demoStep === 2 && (
+                    <div className="animate-fadeIn space-y-4">
+                      <label className="block text-lg font-medium text-foreground">¿Cuál es tu teléfono?</label>
+                      <div className="flex items-center gap-3 border border-border rounded-xl px-4 py-3 focus-within:ring-2 focus-within:ring-primary/50 focus-within:border-primary transition-all">
+                        <span className="text-muted">🇲🇽 +52</span>
+                        <input
+                          type="tel"
+                          placeholder="1234567890"
+                          value={demoFormData.phone}
+                          onChange={(e) => setDemoFormData({ ...demoFormData, phone: e.target.value })}
+                          className="flex-1 bg-transparent border-0 text-foreground placeholder:text-muted focus:outline-none"
+                          autoFocus
+                        />
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Step 3: Company */}
+                  {demoStep === 3 && (
+                    <div className="animate-fadeIn space-y-4">
+                      <label className="block text-lg font-medium text-foreground">¿En qué empresa trabajas?</label>
+                      <input
+                        type="text"
+                        placeholder="Nombre de la empresa"
+                        value={demoFormData.company}
+                        onChange={(e) => setDemoFormData({ ...demoFormData, company: e.target.value })}
+                        className="w-full bg-background/50 border border-border rounded-xl px-4 py-3 text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
+                        autoFocus
+                      />
+                    </div>
+                  )}
+
+                  {/* Step 4: Success Message */}
+                  {demoStep === 4 && (
+                    <div className="animate-fadeIn text-center py-4 space-y-4">
+                      <div className="text-5xl mb-4">✓</div>
+                      <h3 className="text-2xl font-bold text-foreground">¡Gracias!</h3>
+                      <p className="text-muted">Nos pondremos en contacto pronto para mostrate todo lo que puedes hacer con Adnova Studio.</p>
+                    </div>
+                  )}
+
+                  {/* Buttons */}
+                  {demoStep < 4 && (
+                    <div className="flex gap-3 mt-8">
+                      <button
+                        onClick={() => setDemoStep(Math.max(0, demoStep - 1))}
+                        disabled={demoStep === 1}
+                        className="px-6 py-3 bg-muted/10 text-muted disabled:opacity-50 disabled:cursor-not-allowed hover:bg-muted/20 rounded-lg font-medium transition-all"
+                      >
+                        ← Atrás
+                      </button>
+                      <button
+                        onClick={() => {
+                          if (demoStep === 3) {
+                            // Submit form
+                            const submitForm = async () => {
+                              try {
+                                const response = await fetch('/api/contact', {
+                                  method: 'POST',
+                                  headers: { 'Content-Type': 'application/json' },
+                                  body: JSON.stringify({
+                                    ...demoFormData,
+                                    to: 'sales@adnova.studio'
+                                  }),
+                                })
+                                if (response.ok) {
+                                  setDemoStep(4)
+                                  setTimeout(() => {
+                                    setDemoStep(0)
+                                    setDemoFormData({
+                                      email: '',
+                                      fullName: '',
+                                      phone: '',
+                                      company: '',
+                                    })
+                                  }, 3000)
+                                }
+                              } catch (error) {
+                                console.error(error)
+                                alert('Hubo un error. Intenta de nuevo.')
+                              }
+                            }
+                            submitForm()
+                          } else {
+                            setDemoStep(demoStep + 1)
+                          }
+                        }}
+                        disabled={
+                          (demoStep === 1 && !demoFormData.fullName) ||
+                          (demoStep === 2 && !demoFormData.phone) ||
+                          (demoStep === 3 && !demoFormData.company)
+                        }
+                        className="flex-1 px-6 py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary-dark disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] active:scale-[0.98] transition-all"
+                      >
+                        {demoStep === 3 ? 'Enviar' : 'Siguiente →'}
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>

@@ -38,7 +38,7 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground flex flex-col -mt-8">
 
       {/* Hero Section */}
       {/* Hero Section */}
@@ -60,7 +60,7 @@ export default function Home() {
         </div>
 
         {/* Content Container */}
-        <div className="relative z-20 max-w-5xl mx-auto px-6 text-center">
+        <div className="relative z-20 max-w-5xl mx-auto px-6 text-center mt-32">
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight drop-shadow-lg">
             Producción de
             <br />
@@ -70,7 +70,7 @@ export default function Home() {
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto mb-10 drop-shadow-md">
-            Crea anuncios de video para tu producto, marca o servicio en días, no semanas.
+            Crea anuncios de video para tu producto, marca o servicio <br /> en días, no semanas.
           </p>
 
           <Link
@@ -259,199 +259,71 @@ export default function Home() {
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className="py-20 px-6 bg-background">
-        <div className="max-w-7xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-16">
-            <div className="inline-block mb-4">
-              <span className="px-3 py-1 rounded-full bg-primary/10 text-primary font-semibold text-sm border border-primary/20">Precios</span>
-            </div>
-            <h3 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Planes y Precios
-            </h3>
-            <p className="text-xl text-muted max-w-2xl mx-auto">
-              Elige el plan perfecto para tus necesidades y comienza a crear videos increíbles hoy
-            </p>
-          </div>
 
-          {/* Pricing Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {/* Starter Plan */}
-            <div className="bg-card border border-border rounded-2xl p-8 flex flex-col hover:border-primary/30 transition-all">
-              <div className="mb-6">
-                <h4 className="text-2xl font-bold text-foreground mb-2">Starter</h4>
-                <p className="text-muted">Perfecto para comenzar</p>
-              </div>
-
-              <div className="mb-8">
-                <div className="flex items-baseline gap-1">
-                  <span className="text-4xl font-bold text-foreground">$24,000</span>
-                  <span className="text-muted">MXN/mes</span>
-                </div>
-              </div>
-
-              <div className="flex-1 space-y-4 mb-8">
-                <div className="flex items-center gap-3">
-                  <div className="p-1 rounded-full bg-primary/10 text-primary">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <span className="text-foreground">5 Videos/mes</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="p-1 rounded-full bg-primary/10 text-primary">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <span className="text-muted">$4,800 por video</span>
-                </div>
-              </div>
-
-              <Link href="/signup" className="w-full py-4 rounded-xl border border-border text-foreground font-semibold hover:bg-muted/10 transition-all text-center">
-                Comenzar
-              </Link>
-            </div>
-
-            {/* Core Plan - POPULAR */}
-            <div className="bg-gradient-to-b from-card to-card/50 border border-primary/50 rounded-2xl p-8 flex flex-col relative transform md:-translate-y-4">
-              <div className="absolute top-0 right-0 left-0 -mt-4 flex justify-center">
-                <span className="bg-primary text-white text-sm font-bold px-4 py-1 rounded-full shadow-lg">Más Popular</span>
-              </div>
-
-              <div className="mb-6 mt-2">
-                <h4 className="text-2xl font-bold text-foreground mb-2">Core</h4>
-                <p className="text-primary/80 font-medium">Ideal para negocios</p>
-              </div>
-
-              <div className="mb-8">
-                <div className="flex items-baseline gap-1">
-                  <span className="text-5xl font-bold text-white">$36,000</span>
-                  <span className="text-muted">MXN/mes</span>
-                </div>
-              </div>
-
-              <div className="flex-1 space-y-4 mb-8">
-                <div className="flex items-center gap-3">
-                  <div className="p-1 rounded-full bg-primary text-white">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <span className="text-white font-medium">10 Videos/mes</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="p-1 rounded-full bg-primary/20 text-primary">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <span className="text-muted">$3,600 por video</span>
-                </div>
-              </div>
-
-              <Link href="/signup" className="w-full py-4 rounded-xl bg-primary text-white font-bold hover:bg-primary-dark hover:scale-105 transition-all text-center shadow-lg shadow-primary/25">
-                Comenzar
-              </Link>
-            </div>
-
-            {/* Growth Plan */}
-            <div className="bg-card border border-border rounded-2xl p-8 flex flex-col hover:border-primary/30 transition-all">
-              <div className="mb-6">
-                <h4 className="text-2xl font-bold text-foreground mb-2">Growth</h4>
-                <p className="text-muted">Para crecer rápido</p>
-              </div>
-
-              <div className="mb-8">
-                <div className="flex items-baseline gap-1">
-                  <span className="text-4xl font-bold text-foreground">$85,000</span>
-                  <span className="text-muted">MXN/mes</span>
-                </div>
-              </div>
-
-              <div className="flex-1 space-y-4 mb-8">
-                <div className="flex items-center gap-3">
-                  <div className="p-1 rounded-full bg-primary/10 text-primary">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <span className="text-foreground">25 Videos/mes</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="p-1 rounded-full bg-primary/10 text-primary">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <span className="text-muted">$3,400 por video</span>
-                </div>
-              </div>
-
-              <Link href="/signup" className="w-full py-4 rounded-xl border border-border text-foreground font-semibold hover:bg-muted/10 transition-all text-center">
-                Comenzar
-              </Link>
-            </div>
-
-          </div>
-
-          {/* Enterprise Plan */}
-          <div className="mt-12 max-w-4xl mx-auto">
-            <div className="bg-card border border-border p-8 rounded-2xl">
-              <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-                <div className="flex-1 text-center md:text-left">
-                  <div className="mb-2">
-                    <span className="text-xs font-bold tracking-wider uppercase text-primary border border-primary/20 px-2 py-1 rounded bg-primary/10">Enterprise</span>
-                  </div>
-                  <h4 className="text-2xl font-bold text-foreground mb-2">Solución Empresarial</h4>
-                  <p className="text-muted mb-4">
-                    Para equipos grandes con necesidades personalizadas
-                  </p>
-                  <div className="flex flex-wrap gap-4 justify-center md:justify-start text-sm">
-                    <div className="flex items-center gap-2">
-                      <svg className="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span className="text-foreground">50+ Videos/mes</span>
-                    </div>
-                    <div className="hidden md:block text-muted">•</div>
-                    <div className="flex items-center gap-2">
-                      <svg className="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span className="text-foreground font-semibold">Precio Personalizado</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="shrink-0">
-                  <Link href="/contact" className="inline-flex items-center justify-center px-8 py-3 rounded-lg bg-foreground text-background font-bold hover:bg-white/90 transition-all">
-                    Contactar Ventas
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
 
       {/* Enterprise Section */}
-      <section className="py-24 px-6 border-t border-border relative overflow-hidden">
+      <section id="pricing" className="py-24 px-6 border-t border-border relative overflow-hidden">
         {/* Background Decorative Element */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] -z-10" />
 
         <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Planes y Precios</h2>
+            <p className="text-xl md:text-2xl text-muted max-w-2xl mx-auto">
+              Nuestros paquetes se ajustan a tus necesidades.
+              <br />
+              Podemos entregarte desde 5 hasta 50 videos por mes.
+            </p>
+          </div>
           <div className="bg-card/50 backdrop-blur-xl border border-border rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
             {/* Subtle internal glow */}
             <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/10 rounded-full blur-3xl" />
 
-            <form onSubmit={(e) => { e.preventDefault(); alert('Mensaje enviado. Nos pondremos en contacto pronto.'); }} className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
+            <form onSubmit={async (e) => {
+              e.preventDefault();
+              const form = e.target as HTMLFormElement;
+              const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+              const originalBtnText = submitBtn.innerHTML;
+
+              submitBtn.disabled = true;
+              submitBtn.innerHTML = 'Enviando...';
+
+              try {
+                const formData = new FormData(form);
+                const data = {
+                  name: formData.get('name'),
+                  email: formData.get('email'),
+                  subject: `Contacto de ${formData.get('company') || 'N/A'}`,
+                  message: formData.get('message'),
+                };
+
+                const response = await fetch('/api/contact', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(data),
+                });
+
+                if (response.ok) {
+                  alert('¡Mensaje enviado! Nos pondremos en contacto pronto.');
+                  form.reset();
+                } else {
+                  throw new Error('Error al enviar el mensaje');
+                }
+              } catch (error) {
+                console.error(error);
+                alert('Hubo un error al enviar el mensaje. Por favor intenta de nuevo.');
+              } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+              }
+            }} className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
               <div className="space-y-2">
                 <label htmlFor="name" className="text-sm font-medium text-foreground/80 ml-1">Nombre Completo</label>
                 <input
                   type="text"
                   id="name"
+                  name="name"
                   required
                   placeholder="Tu nombre"
                   className="w-full bg-background/50 border border-border rounded-xl px-4 py-3 text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
@@ -462,6 +334,7 @@ export default function Home() {
                 <input
                   type="email"
                   id="email"
+                  name="email"
                   required
                   placeholder="tu@empresa.com"
                   className="w-full bg-background/50 border border-border rounded-xl px-4 py-3 text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
@@ -472,6 +345,7 @@ export default function Home() {
                 <input
                   type="text"
                   id="company"
+                  name="company"
                   placeholder="Nombre de tu empresa"
                   className="w-full bg-background/50 border border-border rounded-xl px-4 py-3 text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
                 />
@@ -480,6 +354,7 @@ export default function Home() {
                 <label htmlFor="message" className="text-sm font-medium text-foreground/80 ml-1">¿En qué podemos ayudarte?</label>
                 <textarea
                   id="message"
+                  name="message"
                   required
                   rows={4}
                   placeholder="Cuéntanos sobre tu proyecto o necesidades..."
@@ -489,7 +364,7 @@ export default function Home() {
               <div className="md:col-span-2 mt-4">
                 <button
                   type="submit"
-                  className="w-full md:w-auto inline-flex items-center justify-center px-10 py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary-dark hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-primary/25 gap-2"
+                  className="w-full md:w-auto inline-flex items-center justify-center px-10 py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary-dark hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-primary/25 gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
                   Enviar Mensaje
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">

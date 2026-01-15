@@ -30,6 +30,8 @@ export async function POST(request: Request) {
 
         // Send email using Resend
         const resendApiKey = process.env.RESEND_API_KEY
+        console.log('[Contact API] Checking RESEND_API_KEY:', resendApiKey ? 'FOUND' : 'NOT FOUND')
+        console.log('[Contact API] All env vars:', Object.keys(process.env).filter(k => k.includes('RESEND')))
 
         if (!resendApiKey) {
             console.warn('[Contact API] RESEND_API_KEY not set')

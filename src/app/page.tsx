@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 import { SparklesIcon } from '@heroicons/react/24/outline'
@@ -17,6 +18,7 @@ const videos = [
 ]
 
 export default function Home() {
+  const router = useRouter()
   const [demoStep, setDemoStep] = useState(0)
   const [demoFormData, setDemoFormData] = useState({
     email: '',
@@ -411,16 +413,10 @@ export default function Home() {
                                   }),
                                 })
                                 if (response.ok) {
-                                  setDemoStep(4)
+                                  // Redirigir a la página de agradecimiento
                                   setTimeout(() => {
-                                    setDemoStep(0)
-                                    setDemoFormData({
-                                      email: '',
-                                      fullName: '',
-                                      phone: '',
-                                      company: '',
-                                    })
-                                  }, 3000)
+                                    router.push('/thank-you')
+                                  }, 100)
                                 }
                               } catch (error) {
                                 console.error(error)

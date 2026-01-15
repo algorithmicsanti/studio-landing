@@ -75,3 +75,54 @@ body {
 .animate-orbit-slow-reverse {
   animation: orbit-reverse 60s linear infinite;
 }
+/* Orbit Section Styles */
+.orbit-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orbit-center {
+  position: relative;
+  z-index: 10;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.orbit-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.orbit-ring {
+  position: relative;
+  animation: orbit 40s linear infinite;
+}
+
+.orbit-item {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 50%;
+  padding: 10px;
+  transition: transform 0.3s ease;
+  animation: orbit-reverse 40s linear infinite;
+}
+
+.orbit-item:hover {
+  transform: scale(1.1);
+}
+
+.crisp-render {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}

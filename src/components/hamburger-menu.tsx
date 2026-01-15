@@ -79,7 +79,7 @@ const HamburgerMenu = () => {
                   onClick={() => setIsMenuOpen(false)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative w-full font-georgia leading-none uppercase tracking-tight text-[12vw] md:text-[8vw] text-white rounded transition-all duration-300 tracking-wide flex items-center justify-between"
+                  className="group relative w-full font-georgia leading-none uppercase tracking-tight text-[12vw] md:text-[8vw] text-white rounded transition-all duration-300 flex items-center justify-between"
                 >
                   <span className="flex items-start">
                     <span className="opacity-100 group-hover:opacity-70 transition-all duration-300">{item.name}</span>

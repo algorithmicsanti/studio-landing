@@ -453,7 +453,7 @@ export default function Home() {
       <footer className="bg-card border-t border-border py-6 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center">
-            <div className="flex justify-center -py-4">
+            <div className="flex justify-center my-4">
               <Image
                 src="/adnovalogo.svg"
                 alt="Adnova Studio Logo"
@@ -481,11 +481,6 @@ export default function Home() {
           </div>
           <div className="text-center text-sm text-muted">
             <p className="mt-2">2025. Todos los Derechos Reservados.</p>
-            <p className="mt-4">
-              <Link href="/editor-login" className="text-xs text-muted/50 hover:text-primary transition-colors">
-                🎬 Editor Access
-              </Link>
-            </p>
           </div>
         </div>
       </footer>

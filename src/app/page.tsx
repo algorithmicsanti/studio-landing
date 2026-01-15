@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { SparklesIcon } from '@heroicons/react/24/outline'
 import { PauseIcon, PlayIcon, SpeakerWaveIcon, SpeakerXMarkIcon } from '@heroicons/react/24/solid'
 import OrbitSection from '@/components/orbit-section'
@@ -291,7 +292,7 @@ export default function Home() {
           <div className="flex gap-4 justify-center mb-12 max-w-2xl mx-auto">
             {demoStep === 0 ? (
               // Step 0: Email input
-              <div className="flex gap-3 w-full bg-card/50 backdrop-blur-xl border border-border rounded-full p-2 shadow-lg">
+              <div className="flex flex-col md:flex-row gap-3 w-full bg-card/50 backdrop-blur-xl border border-border rounded-3xl md:rounded-full p-4 md:p-2 shadow-lg">
                 <input
                   type="email"
                   placeholder="Ingresa tu correo empresarial"
@@ -308,7 +309,7 @@ export default function Home() {
                       alert('Por favor ingresa un correo válido')
                     }
                   }}
-                  className="px-8 py-3 bg-primary text-white font-bold rounded-full hover:bg-primary-dark hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap"
+                  className="w-full md:w-auto px-8 py-3 bg-primary text-white font-bold rounded-full hover:bg-primary-dark hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap"
                 >
                   Solicitar Demo
                 </button>
@@ -451,16 +452,18 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-card border-t border-border py-12 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-8">
-            <div className="text-2xl font-bold text-primary mb-4">Adnova Studio</div>
-            <p className="text-muted mb-6">Plataforma de Creación de Video con IA</p>
-          </div>
-          <div className="flex flex-wrap justify-center gap-8 text-sm text-muted mb-8">
-            <Link href="/#pricing" className="hover:text-primary transition-colors">Precios</Link>
-            <Link href="/support" className="hover:text-primary transition-colors">Soporte</Link>
-            <Link href="/privacy" className="hover:text-primary transition-colors">Política de Privacidad</Link>
-            <Link href="/terms" className="hover:text-primary transition-colors">Términos de Servicio</Link>
-            <Link href="/contact" className="hover:text-primary transition-colors">Contacto</Link>
+          <div className="text-center">
+            <div className="flex justify-center -py-4">
+              <Image
+                src="/adnovalogo.svg"
+                alt="Adnova Studio Logo"
+                width={200}
+                height={200}
+                className="logo-white"
+                priority
+              />
+            </div>
+            <p className="text-muted">Servicio de Producción de Video con IA</p>
           </div>
           <div className="flex justify-center gap-6 mb-8">
             <a

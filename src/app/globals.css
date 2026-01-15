@@ -49,6 +49,10 @@ body {
   animation: orbit-reverse 30s linear infinite;
 }
 
+.logo-white {
+  filter: brightness(0) invert(1);
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;

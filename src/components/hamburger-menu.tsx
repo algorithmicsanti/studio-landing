@@ -79,7 +79,7 @@ const HamburgerMenu = () => {
                   onClick={() => setIsMenuOpen(false)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative w-full font-georgia leading-none uppercase tracking-tight text-[12vw] md:text-[8vw] text-white rounded transition-all duration-300 flex items-center justify-between"
+                  className="group relative w-full menu-font leading-none uppercase tracking-tight text-[12vw] md:text-[8vw] text-white rounded transition-all duration-300 flex items-center justify-between"
                 >
                   <span className="flex items-start">
                     <span className="opacity-100 group-hover:opacity-70 transition-all duration-300">{item.name}</span>
@@ -100,13 +100,13 @@ const HamburgerMenu = () => {
 
           {/* Footer copy y socials */}
           <div className="absolute bottom-16 left-6 space-y-4 md:bottom-16 md:left-10">
-            <p className="max-w-md text-lg md:text-xl leading-snug font-georgia">
+            <p className="max-w-md text-lg md:text-xl leading-snug menu-font">
               Transforming visions into experiences.
             </p>
 
             <a
               href="mailto:contact@adnova.digital"
-              className="block hover:opacity-80 text-lg md:text-xl font-georgia mb-4 md:mb-0"
+              className="block hover:opacity-80 text-lg md:text-xl menu-font mb-4 md:mb-0"
             >
               contact@adnova.digital
             </a>
@@ -122,7 +122,7 @@ const HamburgerMenu = () => {
                   href={s.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3 rounded-full border border-white text-sm font-georgia hover:bg-white hover:text-black transition-colors text-center"
+                  className="px-6 py-3 rounded-full border border-white text-sm menu-font hover:bg-white hover:text-black transition-colors text-center"
                 >
                   {s.name}
                 </a>
@@ -141,7 +141,7 @@ const HamburgerMenu = () => {
                 href={s.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-8 py-3 rounded-full border border-white text-base font-georgia hover:bg-white hover:text-black transition-colors text-center w-[210px]"
+                className="px-8 py-3 rounded-full border border-white text-base menu-font hover:bg-white hover:text-black transition-colors text-center w-[210px]"
               >
                 {s.name}
               </a>

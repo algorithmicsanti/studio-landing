@@ -11,7 +11,7 @@ import OrbitSection from '@/components/orbit-section'
 // Videos used by the ComputerSection (module scope to keep useEffect stable)
 const videos = [
   '/VIDEO%20SEARS.mp4',      // Plays once first
-  '/VIDEO%20LG%20TRUE%20WIRELESS.mp4',
+  '/VIDEO%20CONVERSE%20SPOT.mp4',
   '/VIDEO%20INBODY.mp4',
   '/VIDEO%20RENOPARTES%20MECATRONICA%200BH.mp4',
   '/VIDEO%20LIVERPOOL.mp4',
@@ -138,7 +138,7 @@ export default function Home() {
                   preload="metadata"
                   aria-hidden="true"
                 >
-                  <source src="/VIDEO%20LG%20TRUE%20WIRELESS.mp4" type="video/mp4" />
+                  <source src="/VIDEO%20CONVERSE%20SPOT.mp4" type="video/mp4" />
                 </video>
                 <span className="absolute bottom-3 right-3 px-2 py-1 text-[10px] uppercase tracking-[0.3em] bg-black/70 text-white rounded-full">
                   demo

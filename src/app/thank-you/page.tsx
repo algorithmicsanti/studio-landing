@@ -26,7 +26,7 @@ export default function ThankYouPage() {
 
         {/* Heading principal */}
         <div className="space-y-4">
-          <h1 className="text-5xl md:text-6xl font-bold font-georgia">
+          <h1 className="text-5xl md:text-6xl font-bold menu-font">
             ¡Gracias!
           </h1>
           <p className="text-xl md:text-2xl text-gray-300">

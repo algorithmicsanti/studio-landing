@@ -20,7 +20,7 @@ const WhatsAppWidget = () => {
     >
       {/* Tooltip */}
       <div
-        className={`absolute right-16 bg-[#25D366] text-white px-4 py-2 rounded-lg font-georgia text-sm whitespace-nowrap transition-opacity duration-300 ${
+        className={`absolute right-16 bg-[#25D366] text-white px-4 py-2 rounded-lg menu-font text-sm whitespace-nowrap transition-opacity duration-300 ${
           isHovered ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
       >
